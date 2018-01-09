@@ -144,18 +144,16 @@ public class ServiceHandler extends HttpServlet {
 		String allLines = "";
 		
 		while ((line = br.readLine()) != null) {
-			//Break each line up into shingles and do something. The servlet really should act as a
-			//contoller and dispatch this task to something else... Divide and conquer...! I've been
-			//telling you all this since 2nd year...!
+			//adds each line to a string
 			allLines += " " + line;
 			out.print(line);
 		}
 		out.print("</font>");	
 		
-		System.out.println("these are all lines" + " " + allLines);
-		
+		//gets handle on processor class
 		Processor process = new Processor();
 		try {
+			//tells to checkQueue
 			process.checkQueue();
 		} catch (TimeoutException e) {
 			// TODO Auto-generated catch block
@@ -163,6 +161,7 @@ public class ServiceHandler extends HttpServlet {
 		}
 		
 		try {
+			//calls addToQueue and passes title, content of document and taskNumber
 			addToQueue(title, allLines, taskNumber);
 		} catch (TimeoutException e) {
 			// TODO Auto-generated catch block

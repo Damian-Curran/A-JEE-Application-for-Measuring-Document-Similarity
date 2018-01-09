@@ -2,6 +2,7 @@ package ie.gmit.sw;
 
 import java.util.Set;
 
+
 public class Document {
 	private String docs;
 	private String titles;
@@ -10,6 +11,8 @@ public class Document {
 	private Object jacResult;
 	private String taskNum;
 	 
+	//all getters and setters needed for project
+	
 	public String getTaskNum() {
 		return taskNum;
 	}
@@ -41,7 +44,7 @@ public class Document {
 	}
 
 	public Document() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Document(String title, Set<Integer> shingles) {

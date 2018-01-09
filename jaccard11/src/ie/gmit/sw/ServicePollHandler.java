@@ -2,7 +2,6 @@ package ie.gmit.sw;
 
 import java.io.*;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.TimeoutException;
@@ -39,7 +38,6 @@ public class ServicePollHandler extends HttpServlet {
 		
 		try {
 			checkQueue();
-			System.out.println("in try jacard" + jaccardResults.size());
 		} catch (TimeoutException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,21 +47,14 @@ public class ServicePollHandler extends HttpServlet {
 		
 		for (Map.Entry<String, Document> entry : jaccardResults.entrySet())
 		{
-		    System.out.println(entry.getKey() + "/asdsadsadadasd" + entry.getValue().getTaskNum());
 		    if(taskNumber.equals(entry.getValue().getTaskNum()))
 		    {
 		    	showResults = true;
 		    }
 		}
 		
-		System.out.println("what is size? " + jaccardResults.size());
-		System.out.println("what is boolean state? " + showResults);
-		System.out.println("what is taskNumber? " + taskNumber);
-		
 		if(jaccardResults.size() > 0 && showResults == true)
 		{
-			//PrintWriter out1 = resp.getWriter(); 
-			System.out.println("we have a winner");
 			
 			out.print("<html><head><title>A JEE Application for Measuring Document Similarity</title>");		
 			out.print("</head>");		
@@ -71,8 +62,6 @@ public class ServicePollHandler extends HttpServlet {
 			out.print("<H1>Job#: " + taskNumber + " Completed" + "</H1>");
 			out.print("<H3>Document Title: " + title + "</H3>");
 			out.print("<ol>");
-
-			System.out.println("the isze is " + jaccardResults.size());
 			
 			for(Entry<String, Document> entry : jaccardResults.entrySet())
 			{
@@ -147,21 +136,15 @@ public class ServicePollHandler extends HttpServlet {
 	    	  String message = new String(body, "UTF-8");
 	    	  Document instance = new Document();
 	    	  
-	    	  //jaccardResults = replyProps.getHeaders();
-	    	  System.out.println("headers info " + jaccardResults);
-	    	  
 	    	  for (Map.Entry<String, Object> entry : replyProps.getHeaders().entrySet()) {
-	    	      System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 	    	      instance.setJacResult(entry.getValue());
 	    	      instance.setTaskNum(replyProps.getCorrelationId());
 	    	      
 	    	      jaccardResults.put(entry.getKey(), instance);
-	    	      System.out.println("inside for loop jaccardresult " + jaccardResults.size());
 	    	  }
 	    	  
 	    	  
 	        System.out.println(" [x] Received '" + message + "'" + replyProps.getMessageId());
-	        System.out.println("the headers for the results are:" + " " + replyProps.getHeaders());
 	      }
 	    };
 	    channel.basicConsume(RESULT_QUEUE, true, consumer);
