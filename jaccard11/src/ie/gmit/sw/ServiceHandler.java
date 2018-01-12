@@ -36,6 +36,9 @@ public class ServiceHandler extends HttpServlet {
 	private static long jobNumber = 0;
 
 
+	//gets handle on processor class
+	Processor process = new Processor();
+	
 	/* This method is only called once, when the servlet is first started (like a constructor). 
 	 * It's the Template Patten in action! Any application-wide variables should be initialised 
 	 * here. Note that if you set the xml element <load-on-startup>1</load-on-startup>, this
@@ -150,8 +153,7 @@ public class ServiceHandler extends HttpServlet {
 		}
 		out.print("</font>");	
 		
-		//gets handle on processor class
-		Processor process = new Processor();
+		
 		try {
 			//tells to checkQueue
 			process.checkQueue();
