@@ -4,7 +4,7 @@ For this project we were instructed to create a JEE web application which compar
 
 The main technologies used to achieve our wanted outcome are: Eclipse, Apache Tomcat and lastly RabbitMQ.
 
-We will be focusing on using Java RMI(Remote Method Invocation), a Java API that lets us perform remote method invoaction.
+We will be focusing on using Java RMI(Remote Method Invocation), a Java API that lets us perform remote method invocation.
 
 RabbitMQ is an open source message broker. We use it for adding tasks to a queue.
 Hopefully you will have a better understanding of RabbitMQ with the use of the image below.
