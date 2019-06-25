@@ -22,17 +22,22 @@ Then you will need to install Erlang and RabbitMQ: https://www.rabbitmq.com/inst
 git clone https://github.com/Damian404/A-JEE-Application-for-Measuring-Document-Similarity.git
 
 To use this project, copy the war file into webapps inside your tomcat folder, the directory should look like this:
+
 C:\apache-tomcat-8.5.24\webapps
 
 In your cmd navigate to you tomcats bin folder, an example directory to bin is shown below:
+
 C:\apache-tomcat-8.5.24\bin
 
 Now use the command: startup
+
 This will start the tomcat server.
 
 Open your browser and type:
 http://localhost:8080/Jaccard/
 
 Before the service runs correctly, you will need to start the rabbitmq service.
+
 If rabbitmq was installed correctly this can be done by tapping the windows key and typing rabbitmq where you will see: RabbitMQ Service - start
+
 Click said RabbitMQ Service - start result.
